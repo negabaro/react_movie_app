@@ -22,10 +22,31 @@ const movies = [
 ]
 
 class App extends Component {
+  //Render: will mount -> render -> did mount 
+  //Update: componentWillReceiveProps() -> shoudComponent() -> componentWillUpdate()
+  state = {
+    greeting: 'Hello!'
+  }
+  
+  componentDidMount(){
+    
+    setTimeout(() => {
+      this.setState({ greeting: 'Hello Again' });
+    }, 3000);
+    
+    
+    
+   // setTimeout(() => {
+   //   this.state.greeting = 'something';
+   // }, 5000 )
+  }
+  
+  
+  
   render() {
     return (
       <div className="App">
-        hello!
+        {this.state.greeting}
         {movies.map((movie,index) => {
           return <Movie title={movie.title} poster={movie.poster} key={index} />;
         })};
