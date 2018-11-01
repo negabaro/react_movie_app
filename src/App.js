@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Movie from './Movie';
 
-const movies = [
+
+
+class App extends Component {
+  //Render: will mount -> render -> did mount 
+  //Update: componentWillReceiveProps() -> shoudComponent() -> componentWillUpdate()
+  state = {
+    greeting: 'Hello!',
+    movies: [
   {
     title: "Matrix",
     poster: "https://images-na.ssl-images-amazon.com/images/I/813dE2pH7XL._SL1417_.jpg"
@@ -20,19 +27,25 @@ const movies = [
     poster: "https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2017%2F05%2Fstar-wars_1024.jpg&w=800&q=85"
   }
 ]
-
-class App extends Component {
-  //Render: will mount -> render -> did mount 
-  //Update: componentWillReceiveProps() -> shoudComponent() -> componentWillUpdate()
-  state = {
-    greeting: 'Hello!'
   }
   
   componentDidMount(){
     
     setTimeout(() => {
-      this.setState({ greeting: 'Hello Again' });
+      this.setState({
+        movies: [
+          //...this.state.movies,
+          {
+            title: "Trainspotting",
+            poster: "https://www.bfi.org.uk/sites/bfi.org.uk/files/styles/full/public/image/trainspotting-1996-008-ewan-bremner-ewan-mcgregor-robert-carlyle-00m-m63.jpg?itok=tmpxRcqP"
+          }
+        ]
+      })
     }, 3000);
+    
+    //setTimeout(() => {
+    //  this.setState({ greeting: 'Hello Again' });
+    //}, 3000);
     
     
     
@@ -44,10 +57,11 @@ class App extends Component {
   
   
   render() {
+    console.log('render',this.state);
     return (
       <div className="App">
         {this.state.greeting}
-        {movies.map((movie,index) => {
+        {this.state.movies.map((movie,index) => {
           return <Movie title={movie.title} poster={movie.poster} key={index} />;
         })};
       </div>
