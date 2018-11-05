@@ -12,35 +12,10 @@ class App extends Component {
   }
   
   componentDidMount(){
-    
-    setTimeout(() => {
-      this.setState({
-        movies: [
-          //...this.state.movies,
-        {
-           title: "Matrix",
-           poster: "https://images-na.ssl-images-amazon.com/images/I/813dE2pH7XL._SL1417_.jpg"
-         },
-         {
-            title: "Full Metal Jacket",
-            poster: "https://i.pinimg.com/474x/36/1e/cd/361ecdb85a3767f70810cbe2cdaaf1a4.jpg"
-         },
-         {
-            title: "Old Boy",
-            poster: "https://a.ltrbxd.com/resized/sm/upload/c9/3j/2v/r4/oldboy-1200-1200-675-675-crop-000000.jpg?k=a1b8014ebc"
-          },
-          {
-            title: "Star Wars",
-            poster: "https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2017%2F05%2Fstar-wars_1024.jpg&w=800&q=85"
-          },
-          {
-            title: "Trainspotting",
-            poster: "https://www.bfi.org.uk/sites/bfi.org.uk/files/styles/full/public/image/trainspotting-1996-008-ewan-bremner-ewan-mcgregor-robert-carlyle-00m-m63.jpg?itok=tmpxRcqP"
-          }
-        ]
-      })
-    }, 3000);
-    
+    fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
+    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
+    //console.log로 보면 promise가 보임
+    // 이게 최신 모던 자바스크립트라서 에이작스가 이렇게 쉽게 쓸수있는거임
     //setTimeout(() => {
     //  this.setState({ greeting: 'Hello Again' });
     //}, 3000);
