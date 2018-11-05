@@ -13,7 +13,13 @@ class App extends Component {
   
   componentDidMount(){
     fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
-    console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
+    //.then(potato => console.log(potato)) //위URL가 정상적으로 취득시
+
+    .then(potato => potato.json()) //json으로 바꿔주면 data확인이 가능
+    .then(json => console.log(json)) //음..이렇게 then은 복수로 사용이 가능
+    .catch(err => console.log(err)) //에러가 발생했을시
+
+    //console.log(fetch('https://yts.am/api/v2/list_movies.json?sort_by=download_count')
     //console.log로 보면 promise가 보임
     // 이게 최신 모던 자바스크립트라서 에이작스가 이렇게 쉽게 쓸수있는거임
     //setTimeout(() => {
